@@ -1,4 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_native_timezone_updated_gradle/flutter_native_timezone.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 class LocalNotifications {
@@ -20,6 +21,8 @@ class LocalNotifications {
 
   dailyNotification(int hour, int minute) async {
 
+    final String currentTime = await FlutterNativeTimezone.getLocalTimezone();
+    tz.setLocalLocation(tz.getLocation(currentTime));
     tz.TZDateTime utcTime = tz.TZDateTime.now(tz.local);
     tz.TZDateTime scheduleDate = tz.TZDateTime(
 
@@ -40,7 +43,7 @@ class LocalNotifications {
 
     var androidDetails = const AndroidNotificationDetails(
       
-      '0', 
+      '1', 
       'name'
       
     );
@@ -53,7 +56,7 @@ class LocalNotifications {
 
     await plugin.zonedSchedule(
       
-      0, 
+      1, 
       '¡Llegó el momento!', 
       'No olvides registrar tus gastos, es prioritario tener un orden de tus finanzas personales.', 
       scheduleDate,
