@@ -15,6 +15,10 @@ class LocalNotifications {
       
     );
 
+    AndroidFlutterLocalNotificationsPlugin aflnp = AndroidFlutterLocalNotificationsPlugin();
+    aflnp.requestExactAlarmsPermission();
+    aflnp.requestNotificationsPermission();
+
     await plugin.initialize(initSettings);
 
   }
