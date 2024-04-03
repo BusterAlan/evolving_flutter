@@ -164,10 +164,12 @@ class _TimePickerState extends State<TimePicker> {
 
       _prefs.hour = 8;
       _prefs.minute = 0;
+      _notifs.dailyNotification(8, 0);
 
     } else {
 
       _prefs.deleteTime();
+      _notifs.cancel();
 
     }
 

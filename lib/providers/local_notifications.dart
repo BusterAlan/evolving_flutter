@@ -16,7 +16,6 @@ class LocalNotifications {
     );
 
     AndroidFlutterLocalNotificationsPlugin aflnp = AndroidFlutterLocalNotificationsPlugin();
-    aflnp.requestExactAlarmsPermission();
     aflnp.requestNotificationsPermission();
 
     await plugin.initialize(initSettings);
@@ -45,10 +44,25 @@ class LocalNotifications {
 
     }
 
-    var androidDetails = const AndroidNotificationDetails(
+    var bigImage = const BigPictureStyleInformation(
+
+      // Tanto "DrawableResourceAndroidBitmap" y "largeIcon" pueden ser diferentes recursos junto al por defecto
+      // del icono de flutter :)
+      
+      DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+      largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+      contentTitle: 'Es hora de registrar gastos',
+      summaryText: '¡Registra tus gastos del diario!',
+      htmlFormatContent: true,
+      htmlFormatTitle: true,
+      
+    );
+
+    var androidDetails = AndroidNotificationDetails(
       
       '1', 
-      'name'
+      'name',
+      styleInformation: bigImage
       
     );
 
@@ -67,6 +81,7 @@ class LocalNotifications {
       platform, 
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,   
+      matchDateTimeComponents: DateTimeComponents.time
       
     );
 

@@ -8,7 +8,7 @@ class BackSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    _headers(String name, String amount, Color colorText) {
+    headers(String name, String amount, Color colorText) {
 
       return Column(
 
@@ -59,7 +59,7 @@ class BackSheet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
       
-          _headers('Ingresos', '\$3,500.00', Colors.green),
+          headers('Ingresos', '\$3,500.00', Colors.green),
       
             const VerticalDivider(
             
@@ -67,7 +67,7 @@ class BackSheet extends StatelessWidget {
             
           ),
       
-          _headers('Gastos', '\$1,500.00', Colors.red),
+          headers('Gastos', '\$1,500.00', Colors.red),
       
         ],
       
