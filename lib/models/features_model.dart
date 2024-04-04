@@ -6,14 +6,14 @@ String featuresModelToJson(FeaturesModel data) => json.encode(data.toJson());
 
 class FeaturesModel {
 
-  int id;
+  int? id;
   String category;
   String color;
   String icon;
 
   FeaturesModel({
 
-    this.id = 0,
+    this.id,
     this.category = '',
     this.color = '',
     this.icon = '',
